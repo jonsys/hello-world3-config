@@ -1,0 +1,5 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: hello-world3 stack
+Parameters:
+  AppEnv:
+    Type: String

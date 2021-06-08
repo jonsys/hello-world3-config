@@ -1,0 +1,17 @@
+version: '0.2'
+phases:
+  install:
+    runtime-versions:
+      python: '3.8'
+  build:
+    commands:
+    - python --version
+    - pip install pip==19.3.1
+    - aws --version
+    - make build
+    - aws cloudformation package --template-file /tmp/packaged/sam.json --s3-bucket
+      ${APP_S3_BUCKET} --output-template-file transformed.yaml
+artifacts:
+  files:
+  - transformed.yaml
+  type: zip
